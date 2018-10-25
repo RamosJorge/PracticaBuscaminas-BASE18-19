@@ -59,7 +59,18 @@ public class ControlJuego {
 	 * @return : El número de minas que hay alrededor de la casilla [i][j]
 	 **/
 	private int calculoMinasAdjuntas(int i, int j){
-		
+	
+		int minas = 0;
+		for (int x = i-1; x < i+1; x++) {
+			for (int y = j-1; y < j+1; y++) {
+				if ((x >= 0 || x <= 9) && (y >= 0 && y <= 9)){
+					if (tablero[x][y] == MINA) {
+						minas++;
+					}
+				}
+			}
+		}
+		return minas;
 	}
 	
 	/**
@@ -105,6 +116,7 @@ public class ControlJuego {
 	 * @return Un entero que representa el número de minas alrededor de la celda
 	 */
 	public int getMinasAlrededor(int i, int j) {
+		return tablero[i][j];
 	}
 
 	/**
