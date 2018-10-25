@@ -81,7 +81,10 @@ public class ControlJuego {
 	 * @return : Verdadero si no ha explotado una mina. Falso en caso contrario.
 	 */
 	public boolean abrirCasilla(int i, int j){
-
+		
+		boolean check = false;
+		return check;
+		
 	}
 	
 	
@@ -91,6 +94,21 @@ public class ControlJuego {
 	 * @return Devuelve verdadero si se han abierto todas las celdas que no son minas.
 	 **/
 	public boolean esFinJuego(){
+		int abierta = 0;
+		boolean check = false;
+		for (int i = 0; i < LADO_TABLERO; i++) {
+			for (int j = 0; j < LADO_TABLERO; j++) {
+				if (tablero[i][j] != MINA) {
+					if (abrirCasilla(i, j)) {
+						abierta++;
+					}
+				}
+			}
+		}
+		if (abierta == 80) {
+			check = true;
+		}
+		return check;
 	}
 	
 	
