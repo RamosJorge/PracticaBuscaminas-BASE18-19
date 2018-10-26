@@ -63,7 +63,7 @@ public class ControlJuego {
 		int minas = 0;
 		for (int x = i-1; x < i+1; x++) {
 			for (int y = j-1; y < j+1; y++) {
-				if ((x >= 0 || x <= 9) && (y >= 0 && y <= 9)){
+				if ((x >= 0 && x <= 9) && (y >= 0 && y <= 9)){
 					if (tablero[x][y] == MINA) {
 						minas++;
 					}
