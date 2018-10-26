@@ -37,21 +37,27 @@ public class ControlJuego {
 	public void inicializarPartida(){
 
 		//TODO: Repartir minas e inicializar puntación. Si hubiese un tablero anterior, lo pongo todo a cero para inicializarlo.
+		Random random = new Random();
+		int aleatoriox;
+		int aleatorioy;
+		int minas = 0;
 		puntuacion = 0;
 		for (int i = 0; i < LADO_TABLERO; i++) {
 			for (int j = 0; j < LADO_TABLERO; j++) {
 				tablero[i][j] = 0;
 			}
 		}
-		for (int i = 0; i < LADO_TABLERO; i++) {
-			for (int j = 0; j < LADO_TABLERO; j++) {
-				if (i <= 9) {
-					System.out.print(tablero[i][j]+"      ");
+		
+		for (int i = 0; i < tablero.length; i++) {	
+			for (int j = 0; j < tablero[i].length; j++) {
+				aleatoriox = random.nextInt(9);
+				aleatorioy = random.nextInt(9);
+				while (tablero[aleatoriox][aleatorioy] != MINA && minas < 20) {
+					tablero[aleatoriox][aleatorioy] = MINA;
+					minas++;
 				}
 			}
-			System.out.print("\n");
 		}
-		
 		
 		//Al final del método hay que guardar el número de minas para las casillas que no son mina:
 		for (int i = 0; i < tablero.length; i++) {
@@ -61,6 +67,7 @@ public class ControlJuego {
 				}
 			}
 		}
+		depurarTablero();
 	}
 	
 	/**CÃ¡lculo de las minas adjuntas: 
@@ -74,10 +81,10 @@ public class ControlJuego {
 	private int calculoMinasAdjuntas(int i, int j){
 	
 		int minas = 0;
-		for (int x = i-1; x < i+1; x++) {
-			for (int y = j-1; y < j+1; y++) {
-				if ((x >= 0 && x <= 9) && (y >= 0 && y <= 9)){
-					if (tablero[x][y] == MINA) {
+		for (int x = -1; x < 2; x++) {
+			for (int y = -1; y < 2; y++) {
+				if ((x+i >= 0 && x+i < LADO_TABLERO) && (y+j >= 0 && y+j < LADO_TABLERO)){
+					if (tablero[x+i][y+j] == MINA) {
 						minas++;
 					}
 				}
@@ -96,8 +103,13 @@ public class ControlJuego {
 	public boolean abrirCasilla(int i, int j){
 		
 		boolean check = false;
+		if (tablero[i][j] != MINA) {
+			puntuacion++;
+			check = true;
+		} else {
+			check = false;
+		}
 		return check;
-		
 	}
 	
 	
