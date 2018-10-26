@@ -37,7 +37,20 @@ public class ControlJuego {
 	public void inicializarPartida(){
 
 		//TODO: Repartir minas e inicializar puntación. Si hubiese un tablero anterior, lo pongo todo a cero para inicializarlo.
-		
+		puntuacion = 0;
+		for (int i = 0; i < LADO_TABLERO; i++) {
+			for (int j = 0; j < LADO_TABLERO; j++) {
+				tablero[i][j] = 0;
+			}
+		}
+		for (int i = 0; i < LADO_TABLERO; i++) {
+			for (int j = 0; j < LADO_TABLERO; j++) {
+				if (i <= 9) {
+					System.out.print(tablero[i][j]+"      ");
+				}
+			}
+			System.out.print("\n");
+		}
 		
 		
 		//Al final del método hay que guardar el número de minas para las casillas que no son mina:
