@@ -140,6 +140,11 @@ public class VentanaPrincipal {
 	 */
 	public void inicializarListeners(){
 		//TODO
+		for (int i = 0; i < botonesJuego.length; i++) {
+			for (int j = 0; j < botonesJuego[i].length; j++) {
+				botonesJuego[i][j].addActionListener(new ActionBoton(this, i, j));
+			}
+		}
 	}
 	
 	
