@@ -145,6 +145,14 @@ public class VentanaPrincipal {
 				botonesJuego[i][j].addActionListener(new ActionBoton(this, i, j));
 			}
 		}
+		botonEmpezar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				juego.inicializarPartida();
+			}
+		});
 	}
 	
 	
