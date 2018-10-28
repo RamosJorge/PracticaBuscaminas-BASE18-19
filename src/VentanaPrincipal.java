@@ -150,6 +150,7 @@ public class VentanaPrincipal {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				// Entiendo que hay que borrar los borrar los botones y volver a crearlos pero no fui capaz de implementarlo
 				for (int k = 0; k < panelesJuego.length; k++) {
 					for (int l = 0; l < panelesJuego[k].length; l++) {
 						botonesJuego[k][l].setVisible(false);
@@ -190,6 +191,7 @@ public class VentanaPrincipal {
 			if (answer == JOptionPane.CLOSED_OPTION || answer == JOptionPane.NO_OPTION) {
 				System.exit(1);
 			} else {
+				// Entiendo que hay que borrar los borrar los botones y volver a crearlos pero no fui capaz de implementarlo
 				for (int k = 0; k < panelesJuego.length; k++) {
 					for (int l = 0; l < panelesJuego[k].length; l++) {
 						botonesJuego[k][l].setVisible(false);
