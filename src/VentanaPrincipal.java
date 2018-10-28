@@ -150,6 +150,18 @@ public class VentanaPrincipal {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				for (int k = 0; k < panelesJuego.length; k++) {
+					for (int l = 0; l < panelesJuego[k].length; l++) {
+						botonesJuego[k][l].setVisible(false);
+						panelesJuego[k][l].remove(botonesJuego[k][l]);
+					}
+				}
+				for (int k = 0; k < panelesJuego.length; k++) {
+					for (int l = 0; l < panelesJuego[k].length; l++) {
+						panelesJuego[k][l].add(new JButton("-"));
+					}
+				}
+				inicializarListeners();
 				juego.inicializarPartida();
 			}
 		});
@@ -173,26 +185,26 @@ public class VentanaPrincipal {
 		String opciones[] = {"Si","No"};
 		if (!juego.abrirCasilla(i, j)) {
 			int answer = JOptionPane.showOptionDialog(ventana, "BOOOOOOOOOOM!\n"+"Has perdido\n"+"¿Quieres jugar de nuevo?", 
-					"Enhorabuena", JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+					"Fin del juego", JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
 			pantallaPuntuacion.setText("0");
 			if (answer == JOptionPane.CLOSED_OPTION || answer == JOptionPane.NO_OPTION) {
 				System.exit(1);
 			} else {
-				for (int k = 0; k < botonesJuego.length; k++) {
-					for (int l = 0; l < botonesJuego[k].length; l++) {
+				for (int k = 0; k < panelesJuego.length; k++) {
+					for (int l = 0; l < panelesJuego[k].length; l++) {
 						botonesJuego[k][l].setVisible(false);
 						panelesJuego[k][l].remove(botonesJuego[k][l]);
 					}
 				}
-				for (int k = 0; k < botonesJuego.length; k++) {
-					for (int l = 0; l < botonesJuego[k].length; l++) {
-						botonesJuego[k][l] = new JButton("-");
-						panelesJuego[k][l].add(botonesJuego[k][l]);
-						juego.inicializarPartida();
+				for (int k = 0; k < panelesJuego.length; k++) {
+					for (int l = 0; l < panelesJuego[k].length; l++) {
+						panelesJuego[k][l].add(new JButton("-"));
 					}
 				}
 			}
 
+		} else {
+			mostrarFinJuego(true);
 		}
 		botonesJuego[i][j].setVisible(false);
 		panelesJuego[i][j].remove(botonesJuego[i][j]);
@@ -214,6 +226,9 @@ public class VentanaPrincipal {
 	 */
 	public void mostrarFinJuego(boolean porExplosion) {
 		//TODO
+		if (juego.getPuntuacion() >= 80) {
+			JOptionPane.showMessageDialog(ventana, "Enhorabuena, has ganado!", "Fin del juego", JOptionPane.INFORMATION_MESSAGE);
+		}
 	}
 
 	/**
