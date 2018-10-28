@@ -30,11 +30,7 @@ public class ActionBoton implements ActionListener{
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		ventana.botonesJuego[x][y].setVisible(false);
-		ventana.panelesJuego[x][y].remove(ventana.botonesJuego[x][y]);
-		JLabel jlabel = new JLabel(Integer.toString(ventana.juego.getMinasAlrededor(x, y)));
-		jlabel.setHorizontalAlignment(JLabel.CENTER);
-		ventana.panelesJuego[x][y].add(jlabel);
+		ventana.mostrarNumMinasAlrededor(x, y);
 	}
 
 }

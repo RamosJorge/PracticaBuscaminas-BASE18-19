@@ -170,6 +170,21 @@ public class VentanaPrincipal {
 	 */
 	public void mostrarNumMinasAlrededor(int i , int j) {
 		//TODO
+		String opciones[] = {"Si","No"};
+		if (!juego.abrirCasilla(i, j)) {
+			int answer = JOptionPane.showOptionDialog(ventana, "BOOOOOOOOOOM!\n"+"¿Quieres jugar de nuevo?", 
+					"Enhorabuena", JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+
+		}
+		botonesJuego[i][j].setVisible(false);
+		panelesJuego[i][j].remove(botonesJuego[i][j]);
+		JLabel jlabel = new JLabel(Integer.toString(juego.getMinasAlrededor(i, j)));
+		jlabel.setHorizontalAlignment(JLabel.CENTER);
+		if (juego.getMinasAlrededor(i, j) != -1) {
+			jlabel.setForeground(correspondenciaColores[juego.getMinasAlrededor(i, j)]);
+			panelesJuego[i][j].add(jlabel);
+		}
+		
 	}
 	
 	

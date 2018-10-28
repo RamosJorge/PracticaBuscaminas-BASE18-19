@@ -50,8 +50,8 @@ public class ControlJuego {
 		
 		for (int i = 0; i < tablero.length; i++) {	
 			for (int j = 0; j < tablero[i].length; j++) {
-				aleatoriox = random.nextInt(9);
-				aleatorioy = random.nextInt(9);
+				aleatoriox = random.nextInt(10);
+				aleatorioy = random.nextInt(10);
 				while (tablero[aleatoriox][aleatorioy] != MINA && minas < 20) {
 					tablero[aleatoriox][aleatorioy] = MINA;
 					minas++;
@@ -121,8 +121,8 @@ public class ControlJuego {
 	public boolean esFinJuego(){
 		int abierta = 0;
 		boolean check = false;
-		for (int i = 0; i < LADO_TABLERO; i++) {
-			for (int j = 0; j < LADO_TABLERO; j++) {
+		for (int i = 0; i < tablero.length; i++) {
+			for (int j = 0; j < tablero[i].length; j++) {
 				if (tablero[i][j] != MINA) {
 					if (abrirCasilla(i, j)) {
 						abierta++;
