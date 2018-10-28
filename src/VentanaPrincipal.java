@@ -159,6 +159,7 @@ public class VentanaPrincipal {
 				}
 				for (int k = 0; k < panelesJuego.length; k++) {
 					for (int l = 0; l < panelesJuego[k].length; l++) {
+						panelJuego.add(panelesJuego[k][l]);
 						panelesJuego[k][l].add(new JButton("-"));
 					}
 				}
@@ -194,15 +195,23 @@ public class VentanaPrincipal {
 				// Entiendo que hay que borrar los borrar los botones y volver a crearlos pero no fui capaz de implementarlo
 				for (int k = 0; k < panelesJuego.length; k++) {
 					for (int l = 0; l < panelesJuego[k].length; l++) {
-						botonesJuego[k][l].setVisible(false);
 						panelesJuego[k][l].remove(botonesJuego[k][l]);
+						panelJuego.remove(panelesJuego[k][l]);
+						refrescarPantalla();
 					}
 				}
+				refrescarPantalla();
 				for (int k = 0; k < panelesJuego.length; k++) {
 					for (int l = 0; l < panelesJuego[k].length; l++) {
-						panelesJuego[k][l].add(new JButton("-"));
+						panelJuego.add(panelesJuego[k][l]);
+						botonesJuego[k][l].setVisible(true);
+						panelesJuego[k][l].add(botonesJuego[k][l]);
+						refrescarPantalla();
+						
 					}
 				}
+				refrescarPantalla();
+				juego.inicializarPartida();
 			}
 
 		} else {
