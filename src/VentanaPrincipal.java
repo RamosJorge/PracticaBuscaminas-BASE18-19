@@ -172,8 +172,26 @@ public class VentanaPrincipal {
 		//TODO
 		String opciones[] = {"Si","No"};
 		if (!juego.abrirCasilla(i, j)) {
-			int answer = JOptionPane.showOptionDialog(ventana, "BOOOOOOOOOOM!\n"+"¿Quieres jugar de nuevo?", 
+			int answer = JOptionPane.showOptionDialog(ventana, "BOOOOOOOOOOM!\n"+"Has perdido\n"+"¿Quieres jugar de nuevo?", 
 					"Enhorabuena", JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+			pantallaPuntuacion.setText("0");
+			if (answer == JOptionPane.CLOSED_OPTION || answer == JOptionPane.NO_OPTION) {
+				System.exit(1);
+			} else {
+				for (int k = 0; k < botonesJuego.length; k++) {
+					for (int l = 0; l < botonesJuego[k].length; l++) {
+						botonesJuego[k][l].setVisible(false);
+						panelesJuego[k][l].remove(botonesJuego[k][l]);
+					}
+				}
+				for (int k = 0; k < botonesJuego.length; k++) {
+					for (int l = 0; l < botonesJuego[k].length; l++) {
+						botonesJuego[k][l] = new JButton("-");
+						panelesJuego[k][l].add(botonesJuego[k][l]);
+						juego.inicializarPartida();
+					}
+				}
+			}
 
 		}
 		botonesJuego[i][j].setVisible(false);
@@ -183,6 +201,7 @@ public class VentanaPrincipal {
 		if (juego.getMinasAlrededor(i, j) != -1) {
 			jlabel.setForeground(correspondenciaColores[juego.getMinasAlrededor(i, j)]);
 			panelesJuego[i][j].add(jlabel);
+			actualizarPuntuacion();
 		}
 		
 	}
@@ -202,6 +221,7 @@ public class VentanaPrincipal {
 	 */
 	public void actualizarPuntuacion() {
 		//TODO
+		pantallaPuntuacion.setText(Integer.toString(juego.getPuntuacion()));
 	}
 	
 	/**
