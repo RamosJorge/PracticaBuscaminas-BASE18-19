@@ -18,7 +18,11 @@ import javax.swing.SwingConstants;
  * @author alumno1819
  * @version 1.0
  * {@link #inicializar()}
- * @c
+ * <code>
+ * 		ventana.setVisible(true);
+ *		inicializarComponentes();	
+ *		inicializarListeners();	
+ * </code
  * @since 24/10/2018
  * @see ControlJuego.
  *
