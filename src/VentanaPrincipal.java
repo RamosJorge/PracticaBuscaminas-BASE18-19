@@ -19,11 +19,11 @@ import javax.swing.SwingConstants;
  * @author alumno1819
  * @version 1.0
  * {@link VentanaPrincipal#inicializar()}
- * <code>
+ * <pre>{@code
  * 		ventana.setVisible(true);
  *		inicializarComponentes();	
  *		inicializarListeners();	
- * </code>
+ * }</pre>
  * @since 1.0
  * @see ControlJuego
  *
