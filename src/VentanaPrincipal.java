@@ -13,7 +13,16 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-
+/**
+ * Método que lleva toda la interfaz del buscaminas (paneles, botnones, textos...)
+ * @author alumno1819
+ * @version 1.0
+ * {@link #inicializar()}
+ * @c
+ * @since 24/10/2018
+ * @see ControlJuego.
+ *
+ */
 public class VentanaPrincipal {
 
 	//La ventana principal, en este caso, guarda todos los componentes:
